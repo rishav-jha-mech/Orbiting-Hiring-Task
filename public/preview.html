@@ -27,7 +27,7 @@
         crossorigin='anonymous'></script>
 </body>
 <script>
-    fetch('../events.json')
+    fetch('../events1.json')
         .then(res => res.json())
         .then(data => {
             for (let i = 0; i < data.length; i++) {
@@ -35,8 +35,15 @@
                 document.getElementById('count').innerHTML = `(${data.length})`
                 document.getElementById('container-results').innerHTML += `
                 <div class="card mb-2">
-                    <div class="card-header">
-                        ${elem.time}
+                    <div class="card-header justify-content-between d-flex align-items-center">
+                        <span class="">${elem?.time}</span>
+                        ${elem?.isOnlineEvent ?
+                        `<span class="badge bg-primary rounded-pill">
+                            ONLINE EVENT
+                        </span>`
+                        : `<span class="badge bg-danger rounded-pill">
+                            OFFLINE EVENT
+                        </span>`}
                     </div>
                     <div class="card-body">                  
                         <div class="row">
@@ -46,6 +53,8 @@
                             <div class="col-8">
                                 <h5 class="card-title">${elem?.title}</h5>
                                 <p class="card-text">${elem?.description}</p>
+                                <p class="card-text text-secondary">${elem?.location}</p>
+                                <p class="card-text text-secondary">${elem?.attendees}</p>
                                 <a href="${elem?.link}" class="btn btn-primary mt-3">Go to event</a>
                             </div>
                         </div>              

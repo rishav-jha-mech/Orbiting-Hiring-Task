@@ -7,31 +7,31 @@ import { sampleHtml } from "./sample";
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   // Add custom htmll to the page
-  await page.setContent(sampleHtml);
+  // await page.setContent(sampleHtml);
   let eventData: MeetupEventType[] = [];
 
-  // await page.goto('https://www.meetup.com/find/?location=in--Durgapur&source=EVENTS');
+  await page.goto('https://www.meetup.com/find/?location=in--Delhi&source=EVENTS');
 
-  // async function scrollPage() {
-  //   await page.evaluate(() => {
-  //     window.scrollTo(0, document.body.scrollHeight)
-  //   });
-  // }
+  async function scrollPage() {
+    await page.evaluate(() => {
+      window.scrollTo(0, document.body.scrollHeight)
+    });
+  }
 
-  // let itemsLength = 0;
-  // let i = 1;
-  // while (true) {
-  //   await scrollPage();
-  //   await new Promise((resolve) => setTimeout(resolve, 4000));
+  let itemsLength = 0;
+  let i = 1;
+  while (true) {
+    await scrollPage();
+    await new Promise((resolve) => setTimeout(resolve, 4000));
 
-  //   const newItems = await page.$$(`[data-element-name="categoryResults-eventCard"]`);
-  //   if (newItems.length === itemsLength) {
-  //     break;
-  //   }
-  //   console.log(`Scrolled ${i} times and found ${newItems.length} till now !`);
-  //   i++;
-  //   itemsLength = newItems.length;
-  // }
+    const newItems = await page.$$(`[data-element-name="categoryResults-eventCard"]`);
+    if (newItems.length === itemsLength) {
+      break;
+    }
+    console.log(`Scrolled ${i} times and found ${newItems.length} till now !`);
+    i++;
+    itemsLength = newItems.length;
+  }
 
 
   let elements = await page.$$(`[data-element-name="categoryResults-eventCard"]`);
