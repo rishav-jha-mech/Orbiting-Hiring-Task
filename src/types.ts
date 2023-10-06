@@ -6,4 +6,6 @@ export type MeetupEventType = {
     images: string[],
     image: string,
     link: string,
+    attendees: string,
+    isOnlineEvent: boolean,
 }
