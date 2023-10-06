@@ -1,3 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.sampleHTML = void 0;
+exports.sampleHTML = `
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -2444,3 +2448,4 @@
 </body>
 
 </html>
+`;
