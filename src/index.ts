@@ -4,13 +4,13 @@ import type { MeetupEventType } from "./types";
 import { sampleHtml } from "./sample";
 
 (async () => {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
   // Add custom htmll to the page
   // await page.setContent(sampleHtml);
   let eventData: MeetupEventType[] = [];
 
-  await page.goto('https://www.meetup.com/find/?location=in--Delhi&source=EVENTS');
+  await page.goto('https://www.meetup.com/find/?location=us--ny--New%20York&source=EVENTS');
 
   async function scrollPage() {
     await page.evaluate(() => {
@@ -22,7 +22,7 @@ import { sampleHtml } from "./sample";
   let i = 1;
   while (true) {
     await scrollPage();
-    await new Promise((resolve) => setTimeout(resolve, 4000));
+    await new Promise((resolve) => setTimeout(resolve, 8000));
 
     const newItems = await page.$$(`[data-element-name="categoryResults-eventCard"]`);
     if (newItems.length === itemsLength) {
@@ -74,7 +74,7 @@ import { sampleHtml } from "./sample";
     eventData.push(data);
   }));
   console.log(`Scraped ${eventData.length} events !`);
-  fs.writeFile('events1.json', JSON.stringify(eventData), (err: any) => {
+  fs.writeFile('new york.json', JSON.stringify(eventData), (err: any) => {
     if (err) {
       throw err;
     }
