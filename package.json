@@ -1,0 +1,20 @@
+{
+  "name": "orbiting",
+  "version": "1.0.0",
+  "description": "Data Scraping",
+  "main": "index.js",
+  "author": "rishav-jha-mech <rishav.rj74@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@types/node": "^20.8.2",
+    "@types/puppeteer": "^7.0.4",
+    "puppeteer": "^21.3.8",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": []
+}
