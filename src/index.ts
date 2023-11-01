@@ -1,13 +1,10 @@
-import puppeteer from "puppeteer";
 import fs from "fs";
+import puppeteer from "puppeteer";
 import type { MeetupEventType } from "./types";
-import { sampleHtml } from "./sample";
 
 (async () => {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
-  // Add custom htmll to the page
-  // await page.setContent(sampleHtml);
   let eventData: MeetupEventType[] = [];
 
   await page.goto('https://www.meetup.com/find/?location=us--ny--New%20York&source=EVENTS');
